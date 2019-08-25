@@ -4,10 +4,10 @@ const hbs = require('hbs') // Needed for hbs
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
+const app = express()
 const port = process.env.PORT || 3000
 
 // Define path for Express Config
-const app = express()
 const publicDirPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialSPath = path.join(__dirname, '../templates/partials')

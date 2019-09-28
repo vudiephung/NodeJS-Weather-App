@@ -20,14 +20,14 @@ hbs.registerPartials(partialSPath)
 // Setup static Directory to serve
 app.use(express.static(publicDirPath))
 
-app.get('', (req,res) => {
+app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
         name: 'Vu Diep Hung'
     })
 })
 
-app.get('/about', (req,res) => {
+app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About Me',
         name: 'Vu Diep Hung'
@@ -37,13 +37,13 @@ app.get('/about', (req,res) => {
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help Page',
-        helpText: 'This is some helpful text',
+        helpText: 'No help needed. Help yourself!',
         name: 'Vu Diep Hung'
     })
 })
 
 app.get('/weather', (req, res) => {
-    if(!req.query.address) return res.send('You must provide location for Forecast information!')
+    if (!req.query.address) return res.send('You must provide location for Forecast information!')
 
     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) return res.send({ error })
@@ -62,7 +62,7 @@ app.get('/weather', (req, res) => {
     })
 })
 
-app.get('/help/*', (req,res) => {
+app.get('/help/*', (req, res) => {
     res.render('404', {
         title: 404,
         errorMessage: 'Help Article Not Found!',
@@ -70,7 +70,7 @@ app.get('/help/*', (req,res) => {
     })
 })
 
-app.get('*', (req,res) => {
+app.get('*', (req, res) => {
     res.render('404', {
         title: 404,
         errorMessage: 'Page Not Found!',
@@ -79,5 +79,5 @@ app.get('*', (req,res) => {
 })
 
 app.listen(port, () => {
-    console.log('Server is up on port' + port) 
+    console.log('Server is up on port' + port)
 })
